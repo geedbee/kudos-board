@@ -69,18 +69,34 @@ app.delete('/boards/:id', async (req, res) => {
   res.json(deletedBoard)
 })
 
+//Get cards
+app.get('/cards/:board_id', async (req, res) => {
+    const { board_id } = req.params
+    const cards = await prisma.card.findMany({where: {board_id : parseInt(board_id)}});
+    res.json(cards);
+})
+
 //Create card
 app.post('/cards', async (req, res) => {
-    const { title, image, message, author, time_created, board_id } = req.body
+    const { title, message, author, board_id } = req.body
     const newCard = await prisma.card.create({
       data: {
         title,
-        image,
+        image : "https://picsum.photos/200/300",
         message,
-        author,
-        time_created,
+        author: author || "Anonymous",
+        time_created : Math.floor(Date.now() / 1000),
         board_id,
       }
     })
     res.json(newCard)
+})
+
+//Delete card
+app.delete('/cards/:id', async (req, res) => {
+  const { id } = req.params
+  const deletedCard = await prisma.card.delete({
+    where: { id: parseInt(id) }
+  })
+  res.json(deletedCard)
 })

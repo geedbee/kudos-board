@@ -8,6 +8,7 @@ export const AllContext = createContext();
 function App() {
   const [boardData, setBoardData] = useState([]);
   const [cardData, setCardData] = useState([]);
+  const [cardDataIdx, setCardDataIdx] = useState(null);
   const [category, setCategory] = useState('');
   const [dataChanged, setDataChanged] = useState(false);
 
@@ -24,7 +25,6 @@ function App() {
   useEffect(() => {
     fetchData();
     setDataChanged(false);
-    console.log('useEffect ran') 
   }, [category, dataChanged])
 
   return (
@@ -33,9 +33,9 @@ function App() {
         <h1>Kudos Board</h1>
       </header>
       <main>
-        <AllContext.Provider value={{cardData, setCardData}}>
-        {cardData == '' && <HomePage boardData={boardData} setBoardData={setBoardData} setCategory={setCategory} setDataChanged={setDataChanged}/>}
-        {cardData != '' && <BoardPage cardData={cardData}/>}
+        <AllContext.Provider value={{cardData, setCardData, cardDataIdx, setCardDataIdx}}>
+        {cardDataIdx == null && <HomePage boardData={boardData} setBoardData={setBoardData} setCategory={setCategory} setDataChanged={setDataChanged}/>}
+        {cardDataIdx != null && <BoardPage cardData={cardData}/>}
         </AllContext.Provider>
       </main>
       <footer>Kudos Board ©{new Date().getFullYear()}</footer>
