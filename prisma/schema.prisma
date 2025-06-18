@@ -32,4 +32,15 @@ model Card {
   time_created Int
   board Board @relation(fields: [board_id], references: [id])
   board_id Int
+  upvotes Int @default(0)
+  pinned Boolean @default(false)
+  comments Comment[]
+}
+
+model Comment {
+  id Int @id @default(autoincrement())
+  message String
+  author String
+  card Card @relation(fields: [card_id], references: [id])
+  card_id Int
 }

@@ -34,7 +34,6 @@ export default function HomePage() {
   useEffect(() => {
     fetchData();
     setDataChanged(false);
-    console.log('useEffect ran');
   }, [category, dataChanged])
 
   //search functionality
