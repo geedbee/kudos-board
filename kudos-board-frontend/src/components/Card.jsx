@@ -1,9 +1,13 @@
 import React from 'react'
 import '../components-css/Card.css'
+import CardModal from './CardModal'
 
 export default function Card({data, setCardDataChanged}) {
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
+
     function HandleDelete(e){
         e.preventDefault();
+        e.stopPropagation();
         deleteCard(data.id);
     }
     async function deleteCard(id){
@@ -14,6 +18,7 @@ export default function Card({data, setCardDataChanged}) {
 
     function HandleUpvote(e){
         e.preventDefault();
+        e.stopPropagation();
         upvoteCard(data.id);
     }
     async function upvoteCard(id){
@@ -40,6 +45,7 @@ export default function Card({data, setCardDataChanged}) {
 
     function HandlePin(e){
         e.preventDefault();
+        e.stopPropagation();
         pinCard(data.id);
     }
     async function pinCard(id){
@@ -64,17 +70,25 @@ export default function Card({data, setCardDataChanged}) {
         }
     }
 
+    function HandleOpenCard(e){
+        e.preventDefault();
+        setIsModalOpen(true);
+    }
+
     return (
-      <div>
-          <h2>{data.title}</h2>
-          <img src={data.image} alt="card"/>
-          <p>{data.message}</p>
-          <p>{data.author}</p>
-          <div>
-              <button onClick={HandleUpvote}>Upvotes {data.upvotes}</button>
-              <button onClick={HandleDelete}>Delete Card</button>
-              <button onClick={HandlePin} className={data.pinned ? "pinned" : ''}>Pin</button>
-          </div>
-      </div>
+        <div>
+            <div onClick={HandleOpenCard}>
+                <h2>{data.title}</h2>
+                <img src={data.image} alt="card"/>
+                <p>{data.message}</p>
+                <p>{data.author}</p>
+                <div>
+                    <button onClick={HandleUpvote}>Upvotes {data.upvotes}</button>
+                    <button onClick={HandleDelete}>Delete Card</button>
+                    <button onClick={HandlePin} className={data.pinned ? "pinned" : ''}>Pin</button>
+                </div>
+            </div>
+        {isModalOpen && <CardModal data={data} setIsModalOpen={setIsModalOpen}/>}
+        </div>
     )
 }

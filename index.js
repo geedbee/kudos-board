@@ -129,3 +129,25 @@ app.delete('/cards/:id', async (req, res) => {
   })
   res.json(deletedCard)
 })
+
+//Get comments
+app.get('/comments/:card_id', async (req, res) => {
+  const { card_id } = req.params
+  const comments = await prisma.comment.findMany({
+    where: {card_id : parseInt(card_id)},
+  });
+  res.json(comments);
+})
+
+//Add comment
+app.post('/comments', async (req, res) => {
+    const { message, author, card_id } = req.body
+    const newComment = await prisma.comment.create({
+      data: {
+        message,
+        author: author || "Anonymous",
+        card_id,
+      }
+    })
+    res.json(newComment)
+})
