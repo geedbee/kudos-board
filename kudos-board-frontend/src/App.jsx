@@ -5,38 +5,27 @@ import BoardPage from './components/BoardPage';
 
 export const AllContext = createContext();
 
-
-//Add sample data into database
-
-
 function App() {
   const [boardData, setBoardData] = useState([]);
-  const [displayedData, setDisplayedData] = useState([]);
-
   const [cardData, setCardData] = useState([]);
+  const [category, setCategory] = useState('');
+  const [dataChanged, setDataChanged] = useState(false);
 
+  const fetchData = async () => {
+    const url = `http://localhost:3000/boards?category=${category}`;
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error('Failed to fetch boards');
+    }
+    const data = await response.json();
+    setBoardData(data);
+  }
 
   useEffect(() => {
-    fetch('http://localhost:3000/boards')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json(); // Parse JSON data from the response
-    })
-    .then(data => {
-      // Handle successful response
-      console.log('Boards:', data);
-      // Update UI or perform other actions with the data
-      setBoardData(data);
-      setDisplayedData(data);
-    })
-    .catch(error => {
-      // Handle error
-      console.error('Error fetching boards:', error);
-      // Display an error message or retry the request
-    });
-  }, [])
+    fetchData();
+    setDataChanged(false);
+    console.log('useEffect ran') 
+  }, [category, dataChanged])
 
   return (
     <>
@@ -45,7 +34,7 @@ function App() {
       </header>
       <main>
         <AllContext.Provider value={{cardData, setCardData}}>
-        {cardData == '' && <HomePage data={boardData} displayedData={displayedData} setDisplayedData={setDisplayedData} setCardData={setCardData}/>}
+        {cardData == '' && <HomePage boardData={boardData} setBoardData={setBoardData} setCategory={setCategory} setDataChanged={setDataChanged}/>}
         {cardData != '' && <BoardPage cardData={cardData}/>}
         </AllContext.Provider>
       </main>
