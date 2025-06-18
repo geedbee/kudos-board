@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function Footer() {
   return (
-      <footer>Kudos Board ©{new Date().getFullYear()}</footer>
+      <footer className="app-footer">Kudos Board ©{new Date().getFullYear()}</footer>
   )
 }

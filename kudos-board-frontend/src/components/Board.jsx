@@ -1,4 +1,5 @@
 import {Link} from "react-router"
+import '../components-css/Board.css'
 
 export default function Board({data, setDataChanged}) {
     async function deleteBoard(id){
@@ -13,13 +14,13 @@ export default function Board({data, setDataChanged}) {
     }
 
     return (
-    <div>
+    <div className='board'>
         <img src={data.image} alt={data.title} />
         <h2>{data.title}</h2>
         <p>{data.category}</p>
         <p>{data.author}</p>
         <div>
-            <Link to={`/boards/${data.id}/cards`} state={{data}}>View Board</Link>
+            <Link to={`/boards/${data.id}/cards`} state={{data}}><button>View Board</button></Link>
             <button onClick={HandleDelete}>Delete Board</button>
         </div>
     </div>

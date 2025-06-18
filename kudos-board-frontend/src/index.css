@@ -1,0 +1,19 @@
+:root{
+    --background-color: #fbf4f8;
+    --text-color: #13060d;
+    --primary-color: #c24787;
+    --secondary-color: #dd989f;
+    --tertiary-color: #cf7472;
+}
+
+.dark{
+    --text-color: #f9ecf3;
+    --background-color: #0b0408;
+    --primary-color: #b83d7c;
+    --secondary-color: #672229;
+    --tertiary-color: #8d3230;
+}
+
+body {
+    margin: 0;
+}

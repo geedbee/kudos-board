@@ -28,8 +28,8 @@ export default function CreateNewBoard({setDataChanged, setIsCreateOpen}) {
         }
     }
     return (
-    <div className="modal">
-        <div className='modal-content'>
+    <div className="modal-create-board">
+        <div className='modal-content-create-board'>
             <form onSubmit={CreateNewBoard}>
                 <input type="text" placeholder="Enter board name" required/>
                 <input type="text" placeholder="Enter board category" required/>

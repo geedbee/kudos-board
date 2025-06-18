@@ -31,7 +31,7 @@ export default function BoardPage() {
 
     return (
       <div>
-        <Link to="/">Back</Link>
+        <Link to="/"><button>Back</button></Link>
         <button onClick={OpenCardForm}>Create a Card</button>
         {isCreateOpen && <CreateNewCard setIsCreateOpen={setIsCreateOpen} setCardDataChanged={setCardDataChanged} boardId={id}/>}
         <div className='card-container'>

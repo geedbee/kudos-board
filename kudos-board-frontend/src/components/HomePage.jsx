@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import Board from "./Board";
 import CreateNewBoard from "./CreateNewBoard";
+import '../components-css/HomePage.css'
 
 export default function HomePage() {
   const [boardData, setBoardData] = useState([]);
   const [search, setSearch] = useState('');
   const [isCreateOpen, setIsCreateOpen] = useState(false);
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('All');
   const [dataChanged, setDataChanged] = useState(false);
 
   //fetch board data
@@ -70,7 +71,7 @@ export default function HomePage() {
   ]
 
   return (
-    <div>
+    <div className='home-page'>
         <aside className="search-bar">
           <form onSubmit={HandleSearch}>
               <input type="text" name="search" value={search} onChange={HandleSearchChange} placeholder="Search"/>
@@ -79,7 +80,7 @@ export default function HomePage() {
           </form>
         </aside>
         <aside className="filter-bar">
-          {filterOptions.map((option, key) => (<button key={key} onClick={HandleFilter}>{option}</button>))}
+          {filterOptions.map((option, key) => (<button key={key} className={category === option ? "selected-filter" : ''} onClick={HandleFilter}>{option}</button>))}
         </aside>
         <button onClick={HandleCreateButton}>Create a New Board</button>
         {isCreateOpen && <CreateNewBoard setDataChanged={setDataChanged} setIsCreateOpen={setIsCreateOpen}/>}
