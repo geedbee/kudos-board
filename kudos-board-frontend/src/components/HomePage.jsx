@@ -1,11 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Board from "./Board";
 import CreateNewBoard from "./CreateNewBoard";
 
-export default function HomePage({boardData, setBoardData, setCategory, setDataChanged}) {
+export default function HomePage() {
+  const [boardData, setBoardData] = useState([]);
   const [search, setSearch] = useState('');
   const [isCreateOpen, setIsCreateOpen] = useState(false);
+  const [category, setCategory] = useState('');
+  const [dataChanged, setDataChanged] = useState(false);
 
+  //fetch board data
+  const fetchData = async () => {
+    const url = `http://localhost:3000/boards?category=${category}`;
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error('Failed to fetch boards');
+    }
+    const data = await response.json();
+    setBoardData(data);
+  }
+  //fetch search data
   async function fetchSearch(){
     const url = `http://localhost:3000/boards/search?search=${search}`;
     const response = await fetch(url);
@@ -16,6 +30,14 @@ export default function HomePage({boardData, setBoardData, setCategory, setDataC
     setBoardData(data);
   }
 
+  //update boards on change of category and of data (create/delete)
+  useEffect(() => {
+    fetchData();
+    setDataChanged(false);
+    console.log('useEffect ran');
+  }, [category, dataChanged])
+
+  //search functionality
   function HandleSearch(e){
     e.preventDefault();
     fetchSearch();
@@ -24,14 +46,18 @@ export default function HomePage({boardData, setBoardData, setCategory, setDataC
     e.preventDefault();
     setSearch('');
     setCategory('All');
+    setDataChanged(true);
   }
   function HandleSearchChange(e){
     setSearch(e.target.value);
   }
+  //filter functionality
   function HandleFilter(e){
     const filter = e.target.innerText;
     setCategory(filter);
   }
+
+  //create board
   function HandleCreateButton(e){
     setIsCreateOpen(!isCreateOpen);
   }

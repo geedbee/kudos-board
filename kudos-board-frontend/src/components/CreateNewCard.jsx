@@ -1,11 +1,7 @@
 import React, { useEffect } from 'react'
-import {useState, useContext } from 'react';
-import {AllContext} from "../App.jsx"
+import {useState} from 'react';
 
-export default function CreateNewCard({setIsCreateOpen, setCardDataChanged}) {
-    const context = useContext(AllContext);
-    const cardDataIdx = context.cardDataIdx;
-
+export default function CreateNewCard({setIsCreateOpen, setCardDataChanged, boardId}) {
     const [gifs, setGifs] = useState([]);
 
     useEffect(() => {
@@ -25,7 +21,7 @@ export default function CreateNewCard({setIsCreateOpen, setCardDataChanged}) {
                 title: e.target[0].value,
                 message: e.target[1].value,
                 author: e.target[2].value,
-                board_id: cardDataIdx,
+                board_id: parseInt(boardId),
             })
         };
         try {
