@@ -1,4 +1,5 @@
 import React from 'react'
+import '../components-css/CreateNewBoard.css'
 
 export default function CreateNewBoard({setDataChanged, setIsCreateOpen}) {
     async function CreateNewBoard(e) {
@@ -27,13 +28,16 @@ export default function CreateNewBoard({setDataChanged, setIsCreateOpen}) {
         }
     }
     return (
-    <div>
-        <form onSubmit={CreateNewBoard}>
-            <input type="text" placeholder="Enter board name" required/>
-            <input type="text" placeholder="Enter board category" required/>
-            <input type="text" placeholder="Enter board author" />
-            <button type="submit">Create</button>
-        </form>
+    <div className="modal">
+        <div className='modal-content'>
+            <form onSubmit={CreateNewBoard}>
+                <input type="text" placeholder="Enter board name" required/>
+                <input type="text" placeholder="Enter board category" required/>
+                <input type="text" placeholder="Enter board author" />
+                <button type="submit">Create</button>
+            </form>
+            <button onClick={() => setIsCreateOpen(false)}>Close</button>
+        </div>
     </div>
     )
 }

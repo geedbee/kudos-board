@@ -78,11 +78,11 @@ app.get('/cards/:board_id', async (req, res) => {
 
 //Create card
 app.post('/cards', async (req, res) => {
-    const { title, message, author, board_id } = req.body
+    const { title, message, image, author, board_id } = req.body
     const newCard = await prisma.card.create({
       data: {
         title,
-        image : "https://picsum.photos/200/300",
+        image : image || "https://picsum.photos/200/300",
         message,
         author: author || "Anonymous",
         time_created : Math.floor(Date.now() / 1000),
