@@ -72,17 +72,23 @@ app.delete('/boards/:id', async (req, res) => {
 //Get cards
 app.get('/cards/:board_id', async (req, res) => {
     const { board_id } = req.params
-    const cards = await prisma.card.findMany({where: {board_id : parseInt(board_id)}});
+    const cards = await prisma.card.findMany({
+        where: {board_id : parseInt(board_id)},
+        orderBy: [
+            { pinned: 'desc' },
+            { id: 'desc' }
+        ]
+    });
     res.json(cards);
 })
 
 //Create card
 app.post('/cards', async (req, res) => {
-    const { title, message, author, board_id } = req.body
+    const { title, message, image, author, board_id } = req.body
     const newCard = await prisma.card.create({
       data: {
         title,
-        image : "https://picsum.photos/200/300",
+        image : image || "https://picsum.photos/200/300",
         message,
         author: author || "Anonymous",
         time_created : Math.floor(Date.now() / 1000),
@@ -90,6 +96,29 @@ app.post('/cards', async (req, res) => {
       }
     })
     res.json(newCard)
+})
+
+//Update card
+app.put('/cards/:id', async (req, res) => {
+  const { id } = req.params;
+  const {upvotes, pinned} = req.body
+  try{
+    const updateData = {};
+    if (upvotes !== undefined) {
+      updateData.upvotes = parseInt(upvotes);
+    }
+    if (pinned !== undefined) {
+      updateData.pinned = pinned;
+    }
+    const updatedCard = await prisma.card.update({
+      where: { id: parseInt(id) },
+      data: updateData
+    })
+    res.json(updatedCard)
+  }
+  catch(e){
+    res.json({error: e})
+  }
 })
 
 //Delete card
