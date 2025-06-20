@@ -1,23 +1,27 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Card from './Card'
-import { useState} from 'react';
 import "../components-css/BoardPage.css"
 import CreateNewCard from './CreateNewCard.jsx';
 import { Link, useParams} from 'react-router';
 
 export default function BoardPage() {
     const {id} = useParams();
+    const [isCreateOpen, setIsCreateOpen] = useState(false);
 
     const [cardData, setCardData] = useState([]);
-
-    const [isCreateOpen, setIsCreateOpen] = useState(false);
     const [cardDataChanged, setCardDataChanged] = useState(false);
 
+    //GET the cards
     async function getCards(){
-        const response = await fetch(import.meta.env.VITE_URL + `/cards/${id}`);
-        const cards = await response.json();
-        setCardData(cards);
-        setCardDataChanged(false);
+        try{
+            const response = await fetch(import.meta.env.VITE_URL + `/cards/${id}`);
+            const cards = await response.json();
+            setCardData(cards);
+            setCardDataChanged(false);
+        }
+        catch(err){
+            console.log(err);
+        }
     }
 
     useEffect(() => {

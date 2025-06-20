@@ -4,9 +4,13 @@ import '../components-css/CreateNewCard.css'
 import Gif from './Gif';
 
 export default function CreateNewCard({setIsCreateOpen, setCardDataChanged, boardId}) {
+    //main gif data
     const [gifs, setGifs] = useState([]);
+    //gif user search
     const [gifSearch, setGifSearch] = useState("");
+    //selected gif url
     const [gifUrl, setGifUrl] = useState(null);
+    //current page offset
     const [gifOffset, setGifOffset] = useState(0);
 
     useEffect(() => {
@@ -19,7 +23,6 @@ export default function CreateNewCard({setIsCreateOpen, setCardDataChanged, boar
             alert("Please select a gif");
             return;
         }
-
         const settings = {
             method: 'POST',
             headers: {
@@ -54,10 +57,14 @@ export default function CreateNewCard({setIsCreateOpen, setCardDataChanged, boar
             offset: gifOffset,
             rating: "pg-13"
         });
-        const URL = "https://api.giphy.com/v1/gifs/search?";
-        const response = await fetch(URL + params.toString());
-        const data = await response.json();
-        setGifs(data.data);
+        try {
+            const URL = "https://api.giphy.com/v1/gifs/search?";
+            const response = await fetch(URL + params.toString());
+            const data = await response.json();
+            setGifs(data.data);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     function HandleSearch(e){

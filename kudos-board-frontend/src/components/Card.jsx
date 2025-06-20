@@ -6,17 +6,22 @@ import { MdOutlinePushPin } from "react-icons/md";
 export default function Card({data, setCardDataChanged}) {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
 
+    //DELETE card
     function HandleDelete(e){
         e.preventDefault();
         e.stopPropagation();
         deleteCard(data.id);
     }
     async function deleteCard(id){
-        const response = await fetch(import.meta.env.VITE_URL + `/cards/${id}`, { method: 'DELETE' });
-        const result = await response.json();
-        setCardDataChanged(true);
+        try {
+            await fetch(import.meta.env.VITE_URL + `/cards/${id}`, { method: 'DELETE' });
+            setCardDataChanged(true);
+        } catch (error) {
+            console.error('Error deleting card:', error);
+        }
     }
 
+    //upvote card
     function HandleUpvote(e){
         e.preventDefault();
         e.stopPropagation();
@@ -31,7 +36,6 @@ export default function Card({data, setCardDataChanged}) {
             },
             body: JSON.stringify(body)
         };
-
         try {
             const response = await fetch(import.meta.env.VITE_URL + `/cards/${id}`, settings);
             if (!response.ok) {
@@ -44,6 +48,7 @@ export default function Card({data, setCardDataChanged}) {
         }
     }
 
+    //pin card
     function HandlePin(e){
         e.preventDefault();
         e.stopPropagation();
@@ -63,13 +68,13 @@ export default function Card({data, setCardDataChanged}) {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            const result = await response.json();
             setCardDataChanged(true);
         } catch (error) {
             console.error('Error pinning card:', error);
         }
     }
 
+    //open card modal
     function HandleOpenCard(e){
         e.preventDefault();
         setIsModalOpen(true);

@@ -2,7 +2,7 @@
 
 Submitted by: Gianna Besmonte
 
-Deployed Application (**required**): [Kudos Board Deployed Site](ADD_LINK_HERE)
+Deployed Application (**required**): [Kudos Board Deployed Site](https://kudos-board-frontend-qcyu.onrender.com/)
 
 ### Application Features
 

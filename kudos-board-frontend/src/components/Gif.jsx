@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import '../components-css/Gif.css'
 
-export default function Gif({image, gifUrl, setGifUrl}) {
+export default function Gif({image, setGifUrl}) {
     const [isSelected, setIsSelected] = useState(false);
 
     function SelectGif(e){

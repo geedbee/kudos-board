@@ -3,8 +3,12 @@ import '../components-css/Board.css'
 
 export default function Board({data, setDataChanged}) {
     async function deleteBoard(id){
-        const response = await fetch(import.meta.env.VITE_URL + `/boards/${id}`, { method: 'DELETE' });
-        const result = await response.json();
+        try {
+            await fetch(import.meta.env.VITE_URL + `/boards/${id}`, { method: 'DELETE' });
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
 
     function HandleDelete(e){
