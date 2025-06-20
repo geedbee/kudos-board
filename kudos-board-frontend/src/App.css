@@ -1,13 +1,58 @@
-.App {
+.app {
   text-align: center;
   display: grid;
   grid-template-rows: 1fr auto 1fr;
   height: 100vh;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  font-family: "Lexend", sans-serif;
 }
-
-.board-container{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  padding-left: 10%;
-  padding-right: 10%;
+main {
+  height: 85vh;
+}
+.app-header {
+  height: 10vh;
+  background-color: var(--background-color);
+  font-family: 'Lexend', sans-serif;
+  font-size: 1.5rem;
+  border-bottom: 1px solid grey;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.app-header h1 {
+  background: -webkit-linear-gradient(var(--primary-color), var(--tertiary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.app-footer {
+  height: 5vh;
+  background-color: var(--tertiary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mode-btn{
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+.lexend-400 {
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+button {
+  font-family: "Lexend", sans-serif;
+  background-color: var(--primary-color);
+  border: none;
+  padding: .3rem;
+  margin: .1rem;
+  border-radius: 2px;
+  color: #fbf4f8;
+}
+button:hover {
+  background-color: var(--secondary-color);
 }

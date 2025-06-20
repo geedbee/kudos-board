@@ -1,0 +1,25 @@
+.home-page{
+    overflow: scroll;
+    height: 100%;
+}
+.search-bar{
+    margin: 10px;
+}
+.search-bar input{
+    padding: 5px;
+    font-family: 'Lexend', sans-serif;
+}
+.filter-bar{
+    margin: 10px;
+}
+.selected-filter {
+    background-color: var(--tertiary-color);
+}
+.board-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin-top: 10px;
+  padding-left: 10%;
+  padding-right: 10%;
+  height: 80%;
+}

@@ -1,4 +1,12 @@
+.board-page{
+   overflow: scroll;
+   height: 100%;
+}
 .card-container{
-   display: flex;
-   
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+   margin-top: 10px;
+   padding-left: 10%;
+   padding-right: 10%;
+   height: 80%;
 }

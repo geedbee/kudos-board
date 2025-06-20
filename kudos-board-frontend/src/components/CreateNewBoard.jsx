@@ -18,7 +18,7 @@ export default function CreateNewBoard({setDataChanged, setIsCreateOpen}) {
             })
         };
         try {
-            const fetchResponse = await fetch(`http://localhost:3000/boards`, settings);
+            const fetchResponse = await fetch(import.meta.env.VITE_URL + `/boards`, settings);
             const data = await fetchResponse.json();
             setDataChanged(true);
             setIsCreateOpen(false);
@@ -28,11 +28,15 @@ export default function CreateNewBoard({setDataChanged, setIsCreateOpen}) {
         }
     }
     return (
-    <div className="modal">
-        <div className='modal-content'>
+    <div className="modal-create-board">
+        <div className='modal-content-create-board'>
             <form onSubmit={CreateNewBoard}>
                 <input type="text" placeholder="Enter board name" required/>
-                <input type="text" placeholder="Enter board category" required/>
+                <select name="category" id="category" required>
+                    <option value="Inspiration">Inspiration</option>
+                    <option value="Celebration">Celebration</option>
+                    <option value="Thank you">Thank you</option>
+                </select>
                 <input type="text" placeholder="Enter board author" />
                 <button type="submit">Create</button>
             </form>

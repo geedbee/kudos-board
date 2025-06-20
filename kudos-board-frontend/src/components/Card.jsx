@@ -1,6 +1,7 @@
 import React from 'react'
 import '../components-css/Card.css'
 import CardModal from './CardModal'
+import { MdOutlinePushPin } from "react-icons/md";
 
 export default function Card({data, setCardDataChanged}) {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -11,7 +12,7 @@ export default function Card({data, setCardDataChanged}) {
         deleteCard(data.id);
     }
     async function deleteCard(id){
-        const response = await fetch(`http://localhost:3000/cards/${id}`, { method: 'DELETE' });
+        const response = await fetch(import.meta.env.VITE_URL + `/cards/${id}`, { method: 'DELETE' });
         const result = await response.json();
         setCardDataChanged(true);
     }
@@ -32,7 +33,7 @@ export default function Card({data, setCardDataChanged}) {
         };
 
         try {
-            const response = await fetch(`http://localhost:3000/cards/${id}`, settings);
+            const response = await fetch(import.meta.env.VITE_URL + `/cards/${id}`, settings);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -57,9 +58,8 @@ export default function Card({data, setCardDataChanged}) {
             },
             body: JSON.stringify(body)
         };
-
         try {
-            const response = await fetch(`http://localhost:3000/cards/${id}`, settings);
+            const response = await fetch(import.meta.env.VITE_URL + `/cards/${id}`, settings);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -83,9 +83,9 @@ export default function Card({data, setCardDataChanged}) {
                 <p>{data.message}</p>
                 <p>{data.author}</p>
                 <div>
-                    <button onClick={HandleUpvote}>Upvotes {data.upvotes}</button>
+                    <button onClick={HandleUpvote}>Upvote ({data.upvotes})</button>
                     <button onClick={HandleDelete}>Delete Card</button>
-                    <button onClick={HandlePin} className={data.pinned ? "pinned" : ''}>Pin</button>
+                    <button onClick={HandlePin} className={data.pinned ? "pinned" : ''}><MdOutlinePushPin/></button>
                 </div>
             </div>
         {isModalOpen && <CardModal data={data} setIsModalOpen={setIsModalOpen}/>}
