@@ -135,7 +135,7 @@ Deployed Application (**required**): [Kudos Board Deployed Site](https://kudos-b
 
 ### Walkthrough Video
 
-`https://www.loom.com/share/8812c7e366954e43b182878389722c99?sid=f1ceb694-32cb-48fe-82d1-768f3ec73dbf`
+https://www.loom.com/share/8812c7e366954e43b182878389722c99?sid=f1ceb694-32cb-48fe-82d1-768f3ec73dbf
 
 ### Reflection
 
