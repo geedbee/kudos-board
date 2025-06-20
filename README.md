@@ -79,9 +79,9 @@ Deployed Application (**required**): [Kudos Board Deployed Site](https://kudos-b
 - [X] **Delete Card**
   - [X] Users can delete cards.
   - [X] When the user clicks the delete button for a card, the card disappears from the grid of cards.
-- [ ] **Deployment**
-  - [ ] Website is deployed via Render.
-  - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: For ease of grading, please use the deployed version of your website when creating your walkthrough.
+- [X] **Deployment**
+  - [X] Website is deployed via Render.
+  - [X] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: For ease of grading, please use the deployed version of your website when creating your walkthrough.
 
 ####  Stretch Features
 
@@ -112,7 +112,7 @@ Deployed Application (**required**): [Kudos Board Deployed Site](https://kudos-b
     - [X] Color contrast has at least a 4.5:1 ratio using this [color contrast checker](https://webaim.org/resources/contrastchecker/)
   - [X] The chosen mode (light or dark) persists when navigating from home page to board pages and vice versa.
   - [X] When the user first visits the site the theme defaults to light mode.
-  - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: To ease the grading process, please use the [color contrast checker](https://webaim.org/resources/contrastchecker/) to demonstrate to the grading team that text and background colors on your website have appropriate contrast in both light and dark mode. The Contrast Ratio should be above 4.5:1 and should have a green box surrounding it.
+  - [X] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: To ease the grading process, please use the [color contrast checker](https://webaim.org/resources/contrastchecker/) to demonstrate to the grading team that text and background colors on your website have appropriate contrast in both light and dark mode. The Contrast Ratio should be above 4.5:1 and should have a green box surrounding it.
 - [X] **Pinned Cards**
   - [X] Users can pin a card to the top of the board.
   - [X] A Pin button is displayed on each card.
@@ -135,28 +135,30 @@ Deployed Application (**required**): [Kudos Board Deployed Site](https://kudos-b
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+`https://www.loom.com/share/8812c7e366954e43b182878389722c99?sid=f1ceb694-32cb-48fe-82d1-768f3ec73dbf`
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Yes. I especially found the lectures on Prisma very helpful. I had never used it before and was able to learn it quickly.
+Yes. I especially found the lectures on Prisma very helpful. I had never used it before and was able to learn it without too much trouble.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
-
+I would work more on the CSS, I think that it looks pretty simplistic right now.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-
+I did not demo this week. We had one less day than we typically did so I was not able to ask for as much feedback as I would have liked. I really liked the one color based CSS that my peer did, looked simple and beautiful.
 
 ### Open-source libraries used
 
 - Add any links to open-source libraries used in your project.
+react-icons
+react-router
+giphy api
 
 ### Shout out
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.d
+Sophia

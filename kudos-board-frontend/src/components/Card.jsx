@@ -2,6 +2,7 @@ import React from 'react'
 import '../components-css/Card.css'
 import CardModal from './CardModal'
 import { MdOutlinePushPin } from "react-icons/md";
+import { MdPushPin } from "react-icons/md";
 
 export default function Card({data, setCardDataChanged}) {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -90,7 +91,7 @@ export default function Card({data, setCardDataChanged}) {
                 <div>
                     <button onClick={HandleUpvote}>Upvote ({data.upvotes})</button>
                     <button onClick={HandleDelete}>Delete Card</button>
-                    <button onClick={HandlePin} className={data.pinned ? "pinned" : ''}><MdOutlinePushPin/></button>
+                    <button onClick={HandlePin} className={data.pinned ? "pinned" : ''}>{data.pinned ? <MdPushPin/> : <MdOutlinePushPin/> }</button>
                 </div>
             </div>
         {isModalOpen && <CardModal data={data} setIsModalOpen={setIsModalOpen}/>}
