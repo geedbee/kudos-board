@@ -6,14 +6,14 @@ const tempData =
 [
   {
     "title": "Journey to Joy",
-    "image": "https://picsum.photos/200/300",
+    "image": "https://picsum.photos/id/10/200/300",
     "author": "Sophia Martinez",
     "category": "Celebration",
     "time_created": 1672531199,
     "cards": [
       {
         "title": "The Spark of Happiness",
-        "image": "https://picsum.photos/200/300",
+        "image": "https://picsum.photos/id/11/200/300",
         "message": "A moment of pure bliss ignites the soul.",
         "author": "Julianne Morrow",
         "comments": [
@@ -30,7 +30,7 @@ const tempData =
       },
       {
         "title": "Celebration of Life",
-        "image": "https://picsum.photos/200/300",
+        "image": "https://picsum.photos/id/12/200/300",
         "message": "Embracing every heartbeat with gratitude.",
         "author": "Marcus Fielding",
         "comments": [
@@ -47,7 +47,7 @@ const tempData =
       },
       {
         "title": "Radiant Moments",
-        "image": "https://picsum.photos/200/300",
+        "image": "https://picsum.photos/id/13/200/300",
         "message": "Shining light on the beauty of now.",
         "author": "Nathaniel Frost",
         "comments": [
@@ -66,14 +66,14 @@ const tempData =
   },
   {
     "title": "Gratitude Quest",
-    "image": "https://picsum.photos/200/300",
+    "image": "https://picsum.photos/id/14/200/300",
     "author": "Liam Johnson",
     "category": "Thank you",
     "time_created": 1672617599,
     "cards": [
       {
         "title": "Thank You, Teacher",
-        "image": "https://picsum.photos/200/300",
+        "image": "https://picsum.photos/id/15/200/300",
         "message": "Your guidance has shaped my path.",
         "author": "Milo Greyson",
         "comments": [
@@ -90,7 +90,7 @@ const tempData =
       },
       {
         "title": "Family Support",
-        "image": "https://picsum.photos/200/300",
+        "image": "https://picsum.photos/id/16/200/300",
         "message": "Their love is the foundation of my strength.",
         "author": "Lilliana Everhart",
         "comments": [
@@ -107,7 +107,7 @@ const tempData =
       },
       {
         "title": "Friendship Bonds",
-        "image": "https://picsum.photos/200/300",
+        "image": "https://picsum.photos/id/17/200/300",
         "message": "Cherishing the laughter and memories.",
         "author": "Lucien Blackwater",
         "comments": [
@@ -126,7 +126,7 @@ const tempData =
   },
   {
     "title": "Inspire the Future",
-    "image": "https://picsum.photos/200/300",
+    "image": "https://picsum.photos/id/18/200/300",
     "author": "Olivia Chen",
     "category": "Inspiration",
     "time_created": 1672703999,
@@ -186,7 +186,7 @@ const tempData =
   },
   {
     "title": "Moments of Reflection",
-    "image": "https://picsum.photos/200/300",
+    "image": "https://picsum.photos/id/19/200/300",
     "author": "Ethan Williams",
     "category": "Inspiration",
     "time_created": 1672790399,
@@ -246,7 +246,7 @@ const tempData =
   },
   {
     "title": "Gratitude in Action",
-    "image": "https://picsum.photos/200/300",
+    "image": "https://picsum.photos/id/20/200/300",
     "author": "Ava Johnson",
     "category": "Thank you",
     "time_created": 1672876799,
