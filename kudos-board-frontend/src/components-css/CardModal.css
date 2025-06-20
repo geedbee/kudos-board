@@ -19,3 +19,12 @@
     border-radius: 20px;
     overflow: scroll;
 }
+.comments-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.comment {
+    display: flex;
+    gap: 5px;
+}

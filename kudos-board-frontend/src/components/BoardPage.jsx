@@ -14,7 +14,7 @@ export default function BoardPage() {
     const [cardDataChanged, setCardDataChanged] = useState(false);
 
     async function getCards(){
-        const response = await fetch(`http://localhost:3000/cards/${id}`);
+        const response = await fetch(import.meta.env.VITE_URL + `/cards/${id}`);
         const cards = await response.json();
         setCardData(cards);
         setCardDataChanged(false);
@@ -30,7 +30,7 @@ export default function BoardPage() {
     }
 
     return (
-      <div>
+      <div className='board-page'>
         <Link to="/"><button>Back</button></Link>
         <button onClick={OpenCardForm}>Create a Card</button>
         {isCreateOpen && <CreateNewCard setIsCreateOpen={setIsCreateOpen} setCardDataChanged={setCardDataChanged} boardId={id}/>}

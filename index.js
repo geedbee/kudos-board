@@ -8,29 +8,34 @@ app.use(cors());
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
 
 //Get all boards that match query
 app.get('/boards', async (req, res) => {
-    if (req.query.category === '' || req.query.category == 'All'){
-        const boards = await prisma.board.findMany();
-        res.json(boards);
+    try{
+        if (req.query.category === '' || req.query.category == 'All'){
+            const boards = await prisma.board.findMany();
+            res.json(boards);
+        }
+        else if (req.query.category == 'Recent'){
+            const boards = await prisma.board.findMany({
+              orderBy: {
+                time_created: 'desc',
+              },
+              take: 6,
+            });
+            res.json(boards);
+        }
+        else{
+          const boards = await prisma.board.findMany({where: {category : {equals : req.query.category}}});
+          res.json(boards);
+        }
     }
-    else if (req.query.category == 'Recent'){
-        const boards = await prisma.board.findMany({
-          orderBy: {
-            time_created: 'desc',
-          },
-          take: 6,
-        });
-        res.json(boards);
-    }
-    else{
-      const boards = await prisma.board.findMany({where: {category : {equals : req.query.category}}});
-      res.json(boards);
+    catch(e){
+      console.log(e);
     }
 })
 
@@ -63,10 +68,15 @@ app.post('/boards', async (req, res) => {
 //Delete board
 app.delete('/boards/:id', async (req, res) => {
   const { id } = req.params
-  const deletedBoard = await prisma.board.delete({
-    where: { id: parseInt(id) }
-  })
-  res.json(deletedBoard)
+  try {
+      const deletedBoard = await prisma.board.delete({
+        where: { id: parseInt(id) }
+      })
+      res.json(deletedBoard)
+  }
+  catch (e){
+    res.json({error: e})
+  }
 })
 
 //Get cards
@@ -76,6 +86,7 @@ app.get('/cards/:board_id', async (req, res) => {
         where: {board_id : parseInt(board_id)},
         orderBy: [
             { pinned: 'desc' },
+            {time_pinned: 'desc' },
             { id: 'desc' }
         ]
     });
@@ -109,6 +120,7 @@ app.put('/cards/:id', async (req, res) => {
     }
     if (pinned !== undefined) {
       updateData.pinned = pinned;
+      updateData.time_pinned = Math.floor(Date.now() / 1000);
     }
     const updatedCard = await prisma.card.update({
       where: { id: parseInt(id) },

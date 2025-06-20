@@ -36,7 +36,7 @@ export default function CreateNewCard({setIsCreateOpen, setCardDataChanged, boar
             })
         };
         try {
-            const fetchResponse = await fetch(`http://localhost:3000/cards`, settings);
+            const fetchResponse = await fetch(import.meta.env.VITE_URL + `/cards`, settings);
             const data = await fetchResponse.json();
             setIsCreateOpen(false);
             setCardDataChanged(true);
@@ -78,8 +78,8 @@ export default function CreateNewCard({setIsCreateOpen, setCardDataChanged, boar
     }
 
     return (
-    <div className='modal'>
-        <div className='modal-content'>
+    <div className='modal-create-card'>
+        <div className='modal-content-create-card'>
             <div className='gif'>
                 <form onSubmit={HandleSearch}>
                     <input type="text" placeholder="Search for a gif" onChange={GifSearch}/>

@@ -12,7 +12,7 @@ export default function HomePage() {
 
   //fetch board data
   const fetchData = async () => {
-    const url = `http://localhost:3000/boards?category=${category}`;
+    const url = import.meta.env.VITE_URL + `/boards?category=${category}`;
     const response = await fetch(url);
     if (!response.ok) {
         throw new Error('Failed to fetch boards');
@@ -22,7 +22,7 @@ export default function HomePage() {
   }
   //fetch search data
   async function fetchSearch(){
-    const url = `http://localhost:3000/boards/search?search=${search}`;
+    const url = import.meta.env.VITE_URL + `/boards/search?search=${search}`;
     const response = await fetch(url);
     if (!response.ok) {
         throw new Error('Failed to fetch boards/search');

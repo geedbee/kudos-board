@@ -13,7 +13,7 @@ export default function CardModal({data, setIsModalOpen}) {
 
     async function fetchComments(id){
         try {
-            const response = await fetch(`http://localhost:3000/comments/${id}`);
+            const response = await fetch(import.meta.env.VITE_URL + `/comments/${id}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -40,7 +40,7 @@ export default function CardModal({data, setIsModalOpen}) {
             })
         };
         try {
-            const fetchResponse = await fetch(`http://localhost:3000/comments`, settings);
+            const fetchResponse = await fetch(import.meta.env.VITE_URL + `/comments`, settings);
             const data = await fetchResponse.json();
             setCommentChanged(true);
         } catch (e) {
@@ -49,8 +49,8 @@ export default function CardModal({data, setIsModalOpen}) {
     }
 
     return (
-    <div className='modal'>
-        <div className='modal-content'>
+    <div className='modal-create-card'>
+        <div className='modal-content-create-card'>
             <button onClick={() => setIsModalOpen(false)}>Close</button>
             <div>
                 <h2>{data.title}</h2>
@@ -61,6 +61,7 @@ export default function CardModal({data, setIsModalOpen}) {
             <div className='comments-container'>
                 {comments.map((comment, id) => (<Comment key={id} comment={comment} />))}
             </div>
+            <h2>Add a comment:</h2>
             <form onSubmit={CreateNewComment}>
                 <input type="text" placeholder='Add a comment...' />
                 <input type='text' placeholder='Add an author...' />
